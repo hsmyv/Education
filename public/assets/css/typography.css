@@ -1,0 +1,18 @@
+
+/*=================
+	LISTS
+====================*/
+dl, ul, ol { list-style-position: outside; padding: 0; }
+
+ul li, ol li { padding: 0; }
+dl { margin-left: 0; margin-bottom: 30px; }
+dl dd { margin-bottom: 10px; }
+
+.list-inline li{
+	display: inline-block;
+}
+.mfp-gallery{
+	list-style:none;
+	margin-bottom: 0;
+}
+
