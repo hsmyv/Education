@@ -30,6 +30,7 @@ class CreateCoursesTable extends Migration
             $table->text('description');
             $table->text('certification');
             $table->text('learning_outcomes');
+           
             $table->timestamps();
         });
     }

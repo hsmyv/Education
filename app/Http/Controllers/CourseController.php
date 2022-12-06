@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Course;
+use Illuminate\Support\Facades\DB;
+use App\Models\Video;
+use Storage;
+
 class CourseController extends Controller
 {
     public function show(Course $course)
@@ -25,7 +29,8 @@ class CourseController extends Controller
             'description'       => 'required|max:150',
             'certification'     => 'required',
             'learning_outcomes' => 'required',
-            'category_id'       => ['required', Rule::exists('categories', 'id')]
+            'category_id'       => ['required', Rule::exists('categories', 'id')],
+
         ]);
 
         $attributes['user_id'] = Auth()->id();
@@ -36,7 +41,29 @@ class CourseController extends Controller
                     ->usingName($request->title)
                     ->toMediaCollection('images');
           }
+
+
+            $title = $request->course_title;
+            $videos = $request->file('videos');
+                for($i=0; $i < count($title); $i++)
+                {
+
+                    $path = $videos[$i]->store('videos', ['disk' =>      'my_files']);
+                    $datasave = [
+                    'course_id' => 1,
+                    'title'    => $title[$i],
+                    'video'      => $path
+                    ];
+                    $getID3 = new \getID3;
+                    $file = $getID3->analyze($path);
+                    $duration = date('H:i:s', $file['playtime_seconds']);
+                    $datasave['duration'] = $duration;
+                    Video::create($datasave);
+                }
+
         return redirect()->route('courses')->with('success', "The course published successfully" );
+
+
     }
 
      public function destroy(Course $course)

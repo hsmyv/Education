@@ -130,3 +130,4 @@ CKEDITOR.replace( 'summary-ckeditor', {
     filebrowserUploadMethod: 'form'
 });
 </script>
+

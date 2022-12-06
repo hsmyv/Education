@@ -61,7 +61,6 @@ Route::get('/', function () {
     Route::delete('courses/{course}/delete',   [CourseController::class, 'destroy'])->name('delete-course')->middleware('auth');
 
 
-
     Route::get('about',           [WebController::class,  'about'])->name('about');
     Route::get('events',          [WebController::class,  'events'])->name('events');
     Route::get('events-details',  [WebController::class,  'events_details'])->name('events-details');

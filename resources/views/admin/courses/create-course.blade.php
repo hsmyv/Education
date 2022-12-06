@@ -61,12 +61,12 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Select Skill Level</label>
                                             <select name="skill_level" id="skill_lavel" required>
-                                                <option value="beginner"            @if(old('skill_level') == 'beginner') selected="selected" @endif>Beginner(A1)</option>
-                                                <option value="elementary"          @if(old('skill_level') == 'elementary') selected="selected" @endif>Elementary(A2)</option>
-                                                <option value="intermediate"        @if(old('skill_level') == 'intermediate') selected="selected" @endif>Intermediate(B1)</option>
+                                                <option value="beginner"            @if(old('skill_level') == 'beginner')           selected="selected" @endif>Beginner(A1)</option>
+                                                <option value="elementary"          @if(old('skill_level') == 'elementary')         selected="selected" @endif>Elementary(A2)</option>
+                                                <option value="intermediate"        @if(old('skill_level') == 'intermediate')       selected="selected" @endif>Intermediate(B1)</option>
                                                 <option value="upper-intermediate"  @if(old('skill_level') == 'upper-indermediate') selected="selected" @endif>Upper-Intermediate(B2)</option>
-                                                <option value="advanced"            @if(old('skill_level') == 'advanced') selected="selected" @endif>Avanced(C1)</option>
-                                                <option value="proficiency"         @if(old('skill_level') == 'proficiency') selected="selected" @endif>Proficiency(C2)</option>
+                                                <option value="advanced"            @if(old('skill_level') == 'advanced')           selected="selected" @endif>Avanced(C1)</option>
+                                                <option value="proficiency"         @if(old('skill_level') == 'proficiency')        selected="selected" @endif>Proficiency(C2)</option>
                                             </select>
                                             </div>
 
@@ -111,7 +111,6 @@
 
 
                                     <div class="seperator"></div>
-
 									<div class="col-12 m-t20">
 										<div class="ml-auto m-b5">
 											<h3>3. Add Image</h3>
@@ -123,8 +122,53 @@
                                                     <div class="sm:col-span-6">
                                                             <label for="photos" class="block text-sm font-medium text-gray-700"> Post Image </label>
                                                             <div class="mt-1">
-                                                            <input onchange="loadFile(event)" name="image" type="file" id="image" wire:model="newImage" name="image" class="form-control" />
+                                                            <input value="{{old('image')}}" onchange="loadFile(event)" name="image" type="file" id="image" wire:model="newImage" name="image" class="form-control" />
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                             </div>
+                                             </div>
+										</div>
+									</div>
+                                    <div class="seperator"></div>
+									<div class="col-12 m-t20">
+										<div class="ml-auto m-b5">
+											<h3>4. Add Course</h3>
+                                             <div class="form-group col-12">
+                                             <div id="dynamicTable">
+                                                    <div class="form-group">
+                                                    <div class="sm:col-span-6">
+                                                            <label for="photos" class="block text-sm font-medium text-gray-700">First Level</label>
+                                                            <div class="mt-1">
+                                                                <label class="col-form-label">Title</label>
+                                                                <input class="form-control" type="text" name="course_title[]" placeholder="Enter Title">
+                                                                </div>
+                                                                <div class="mt-1">
+                                                                <label class="col-form-label">Choose Video</label>
+                                                                <input accept="video/mp4" type="file"  name="videos[]" value="{{old('videos[]')}}" multiple>
+                                                                <button type="button" name="add" id="add" class="button xl:w-32 text-white bg-theme-1 xl:mr-3 align-top mt-2 btn btn-success">Add</button>
+
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                             </div>
+                                             <div class="form-group col-12">
+                                             <div id="dynamicTable2">
+                                                    <div class="form-group">
+                                                    <div class="sm:col-span-6">
+                                                            <label for="photos" class="block text-sm font-medium text-gray-700">Second Level</label>
+                                                            <div class="mt-1">
+                                                                <label class="col-form-label" >Title</label>
+                                                                <input class="form-control" type="text" name="title2" placeholder="Enter Title">
+                                                            </div>
+                                                            <div class="mt-1">
+                                                                <label class="col-form-label">Choose Video</label>
+                                                                <input type="file"  name="videos2[]" multiple>
+                                                                <button type="button" name="add2" id="add2" class="button xl:w-32 text-white bg-theme-1 xl:mr-3 align-top mt-2 btn btn-success">Add</button>
+
+                                                            </div>
+                                                    </div>
                                                         </div>
                                                     </div>
                                              </div>
@@ -172,3 +216,25 @@ CKEDITOR.replace( 'summary-ckeditor', {
     filebrowserUploadMethod: 'form'
 });
 </script>
+
+  <script type="text/javascript">
+            var i = 0;
+            $("#add").click(function(){
+                ++i;
+                $("#dynamicTable").append('<tr><td><div class="mt-1"><label class="col-form-label">Title</label><input class="form-control" type="text" name="course_title[]" placeholder="Enter Title"></div><div class="mt-1"><label class="col-form-label">Choose Video</label><input type="file"  name="videos[]" value="{{old('videos')}}" multiple></div><button type="button" class="button button--lg w-full xl:w-25 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 xl:mt-0  remove-tr">Remove</button></td></tr>');
+            });
+            $(document).on('click', '.remove-tr', function(){
+                 $(this).parents('tr').remove();
+            });
+        </script>
+
+          <script type="text/javascript">
+            var i = 0;
+            $("#add2").click(function(){
+                ++i;
+                $("#dynamicTable2").append('<tr><td><div class="mt-1"><label class="col-form-label">Title</label><input class="form-control" type="text" name="title2" placeholder="Enter Title"></div><div class="mt-1"><label class="col-form-label">Choose Video</label><input type="file"  name="videos2[]" multiple></div><button type="button" class="button button--lg w-full xl:w-25 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 xl:mt-0  remove-tr2">Remove</button></td></tr>');
+            });
+            $(document).on('click', '.remove-tr2', function(){
+                 $(this).parents('tr').remove();
+            });
+        </script>

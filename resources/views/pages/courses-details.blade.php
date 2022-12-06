@@ -100,10 +100,34 @@
 									</div>
 								</div>
 							</div>
+                            
 							<div class="m-b30" id="curriculum">
 								<h4>Curriculum</h4>
 								<ul class="curriculum-list">
                                     <br>
+                                    <li>@php $i=1  @endphp
+											<h5>First Level example</h5>
+                                            @foreach ($course->videos as $video )
+											<ul>
+												<li>
+													<div class="curriculum-list-box">
+														<span>Lesson {{$i++}}</span> {{$video->title}}
+													</div>
+													<span>{{$video->duration}} minutes</span>
+												</li>
+                                                <br>
+                                                <div>
+
+                                                     <video width="320" height="240" controls>
+                                                        <source src="{{URL::asset($video->video)}}" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+
+                                                </div>
+
+											</ul>
+                                            @endforeach
+										</li>
 										<li>
 											<h5>First Level</h5>
 											<ul>

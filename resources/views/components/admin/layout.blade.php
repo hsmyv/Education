@@ -78,6 +78,7 @@
 <script src='/admin/assets/vendors/calendar/moment.min.js'></script>
 <script src='/admin/assets/vendors/calendar/fullcalendar.js'></script>
 <script src='/admin/assets/vendors/switcher/switcher.js'></script>
+@yield('scripts')
 <script src="/js/uploadimage.js"></script>
 <script>
   $(document).ready(function() {

@@ -25,4 +25,9 @@ class Course extends Model implements HasMedia
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
 }
