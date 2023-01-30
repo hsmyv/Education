@@ -9,8 +9,11 @@
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
-									<label>Your Name</label>
-									<input name="name" type="text" required="" class="form-control" >
+									<label>Your Email</label>
+									<input name="email" type="text" required="" class="form-control" >
+                                    @error('email')
+                                    <p class="text-red-500 text-xs mt-1"> {{$message}} </p>
+                                    @enderror
 								</div>
 							</div>
 						</div>
@@ -19,6 +22,9 @@
 								<div class="input-group">
 									<label>Your Password</label>
 									<input name="password" type="password" class="form-control" required="" >
+                                    @error('password')
+                                        <p class="text-red-500 text-xs mt-1"> {{$message}} </p>
+                                    @enderror
 								</div>
 							</div>
 						</div>

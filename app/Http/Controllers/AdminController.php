@@ -8,7 +8,10 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\Comment;
 use App\Models\AboutInformations;
+use App\Models\Contact;
+use App\Models\Template;
 use Input;
+
 class AdminController extends Controller
 {
 
@@ -23,19 +26,36 @@ class AdminController extends Controller
     {
         return view('admin.reviews.post-comments', ['comments' => Comment::latest()->get()]);
     }
-     public function courses()
+    public function courses()
     {
         return view('admin.courses.courses', ['courses' => Course::all()]);
     }
-       public function messages()
+    public function messages()
     {
         return view('admin.mail.messages');
     }
-       public function activity()
+
+    public function contact()
+    {
+        $contact = Contact::where('id', 1)->first();
+        return view('admin.mail.contacts', ['contact' => $contact]);
+    }
+    public function templates()
+    {
+        $templates = Template::all();
+        return view('admin.mail.templates', ['templates' => $templates]);
+    }
+    public function template_edit(Template $template)
+    {
+        return view('admin.mail.template', ['template' => $template, 'keys' => $template->keys]);
+    }
+
+
+    public function activity()
     {
         return view('admin.profile.activity');
     }
-       public function profile()
+    public function profile()
     {
         $user = Auth()->user();
         return view('admin.profile.profile', ['user' => $user]);
@@ -49,56 +69,67 @@ class AdminController extends Controller
     {
         return view('admin.blog.create-post');
     }
-      public function edit_post(Post $post)
+    public function edit_post(Post $post)
     {
         return view('admin.blog.edit-post', ['post' => $post]);
     }
 
     public function posts(Post $post)
     {
-       return view('admin.blog.posts', ['post' => $post, 'posts' => Post::all()]);
+        return view('admin.blog.posts', ['post' => $post, 'posts' => Post::all()]);
     }
     public function edit_about()
     {
         $information = AboutInformations::where('id', 1)->first();
-        return view('admin.edit.about' ,['information' => $information]);
+        return view('admin.edit.about', ['information' => $information]);
     }
     public function edit_about_informations(Request $request, AboutInformations $aboutInformations)
     {
         //$form = request()->all();
-       // $form = request()->except(['_token', 'image']);
+        // $form = request()->except(['_token', 'image']);
 
 
-         $form = $request->validate([
-                'slot1_title'               => 'required',
-                'slot1_description'         => 'required',
-                'slot2_title'               => 'required',
-                'slot2_description'         => 'required',
-                'slot3_title'               => 'required',
-                'slot3_description'         => 'required',
-                'picture_title'             => 'required',
-                'picture_body'              => 'required',
-                'video_title'               => 'required',
-                'video_description'         => 'required',
-                'video_slot1_title'         => 'required',
-                'video_slot1_description'   => 'required',
-                'video_slot2_title'         => 'required',
-                'video_slot2_description'   => 'required',
-                'video_slot3_title'         => 'required',
-                'video_slot3_description'   => 'required',
-                'video_slot4_title'         => 'required',
-                'video_slot4_description'   => 'required',
-            ]);
+        $form = $request->validate([
+            'slot1_title'               => 'required',
+            'slot1_description'         => 'required',
+            'slot2_title'               => 'required',
+            'slot2_description'         => 'required',
+            'slot3_title'               => 'required',
+            'slot3_description'         => 'required',
+            'picture_title'             => 'required',
+            'picture_body'              => 'required',
+            'video_title'               => 'required',
+            'video_description'         => 'required',
+            'video_slot1_title'         => 'required',
+            'video_slot1_description'   => 'required',
+            'video_slot2_title'         => 'required',
+            'video_slot2_description'   => 'required',
+            'video_slot3_title'         => 'required',
+            'video_slot3_description'   => 'required',
+            'video_slot4_title'         => 'required',
+            'video_slot4_description'   => 'required',
+        ]);
 
-             if($request->hasFile('image')){
-                    $aboutInformations->addMediaFromRequest('image')
-                    ->usingName('about')
-                    ->toMediaCollection('images');
-                }
+        if ($request->hasFile('image')) {
+            $aboutInformations->addMediaFromRequest('image')
+                ->usingName('about')
+                ->toMediaCollection('images');
+        }
 
         AboutInformations::where('id', 1)->update($form);
 
 
+        return back();
+    }
+
+    public function edit_template(Template $template, Request $request)
+    {
+        $form = $request->validate([
+            'subject' => 'required',
+            'body'    => 'required',
+        ]);
+
+        $template->update($form);
         return back();
     }
 }

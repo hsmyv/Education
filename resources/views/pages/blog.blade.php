@@ -67,7 +67,7 @@
 		                    {{--pagination hissesi--}}
 
 						</div>
-                        
+
 						<x-rightsidebar :posts="$posts" :categories="$categories"/>
 					</div>
 				</div>

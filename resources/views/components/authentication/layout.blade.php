@@ -9,11 +9,11 @@
 	<meta name="robots" content="" />
 
 	<!-- DESCRIPTION -->
-	<meta name="description" content="EduChamp : Education HTML Template" />
+	<meta name="description" content="Education" />
 
 	<!-- OG -->
-	<meta property="og:title" content="EduChamp : Education HTML Template" />
-	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:title" content="Education" />
+	<meta property="og:description" content="Education" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
 
@@ -22,7 +22,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="/assets/assets/images/favicon.png" />
 
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>Education </title>
 
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,6 +46,11 @@
 	<link class="skin" rel="stylesheet" type="text/css" href="/assets/assets/css/color/color-1.css">
 
 </head>
+@if(Session::has('error'))
+
+<div class='alert alert-error'>Wrong ID</div>
+
+@endif
 {{$slot}}
 
 <!-- External JavaScripts -->

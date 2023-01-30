@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -25,17 +29,23 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
+
+        $template = DB::table('templates')->where('id', 3)->first();
+        $template2 = DB::table('templates')->where('id', 4)->first();
+
         $attributes = $request->validate([
             'name' => 'required|min:3',
             'email' => 'required|min:3|unique:users,email',
             'password' => 'required|min:6'
         ]);
 
-        $attributes['password'] = bcrypt($attributes['password']);
-
         $user = User::create($attributes);
-
         Auth()->login($user);
+        sendUserEmail($user, $request->password, $template);
+        sendUserEmail($user, $request->password, $template2);
+        
+        //(new ContactController)->sendUserEmail($user, $template);
+        // (new ContactController)->mail($user);  //last time doesn't work
 
         return redirect('/');
     }
@@ -43,17 +53,17 @@ class UserController extends Controller
     public function login(Request $request)
     {
 
+
         $attributes = $request->validate([
-            'name' => 'required|min:3',
+            'email' => 'required|min:3',
             'password' => 'required'
         ]);
 
-        if(auth()->attempt($attributes)){
+        if (auth()->attempt($attributes)) {
             session()->regenerate();
 
             return redirect('/')->with('success', 'You are now logged in!');
         }
-
 
         throw ValidationException::withMessages([
             'email'     => 'Invalid Credentials'
@@ -67,6 +77,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-         return redirect()->route('home')->with('success', 'You have been logout');
+        return redirect()->route('home')->with('success', 'You have been logout');
     }
 }

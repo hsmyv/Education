@@ -54,7 +54,7 @@ class CommentController extends Controller
             $post->comments()->save($reply);
 
 
-            $reply->comment->user->notify(new CommentNotification($reply));
+            $reply->comment->user->notify(new CommentNotification($reply, $post));
 
             return back();
     }

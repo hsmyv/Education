@@ -13,6 +13,8 @@ use App\Models\Comment;
 use App\Observers\CommentObserver;
 use App\Observers\PostObserver;
 use Illuminate\Auth\Access\Response;
+use App\Models\Contact;
+use Config;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +35,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*$mailsetting = Contact::first();
+        if($mailsetting){
+            $data = [
+                'driver'    => $mailsetting->transport,
+                'host'      => $mailsetting->host,
+                'port'      => $mailsetting->port,
+                'encryption'=> $mailsetting->encryption,
+                'username'  => $mailsetting->username,
+                'password'  => $mailsetting->password,
+                'from'      =>[
+                    'address'=> $mailsetting->email,
+                    'name'   => "Laravel"
+                ]
+            ];
+            Config::set('mail', $data);
+        }*/
+
         Comment::observe(CommentObserver::class);
         Post::observe(PostObserver::class);
 

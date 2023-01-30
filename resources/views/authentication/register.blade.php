@@ -11,6 +11,9 @@
 								<div class="input-group">
 									<label>Your Name</label>
 									<input name="name" type="text" required class="form-control" value="{{old('name')}}">
+                                     @error('name')
+                                    <p class="text-red-500 text-xs mt-1"> {{$message}} </p>
+                                    @enderror
 								</div>
 							</div>
 						</div>
@@ -19,6 +22,9 @@
 								<div class="input-group">
 									<label>Your Email Address</label>
 									<input name="email" type="email" required class="form-control" value="{{old('email')}}">
+                                     @error('email')
+                                    <p class="text-red-500 text-xs mt-1"> {{$message}} </p>
+                                    @enderror
 								</div>
 							</div>
 						</div>
@@ -27,6 +33,9 @@
 								<div class="input-group">
 									<label>Your Password</label>
 									<input name="password" type="password" class="form-control" required>
+                                     @error('password')
+                                    <p class="text-red-500 text-xs mt-1"> {{$message}} </p>
+                                    @enderror
 								</div>
 							</div>
 						</div>

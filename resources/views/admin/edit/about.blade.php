@@ -162,68 +162,6 @@
 
 </x-forEditlayout>
 
-{{--
-        <div class="testbox" align="center">
-            <form method="Post" action="{{route('edit-information')}}">
-                @csrf
-    <div class="name-item">
-          <input value="{{old('slot1_title', $information->slot1_title)}}" type="text" name="slot1_title" id="title" placeholder="1 Slot title" />
-    </div>
-    <div class="name-item">
-        <textarea class="form-control" id="slot1_description" name="slot1_description">{{old('body')}}</textarea>
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="slot2_title" id="title" placeholder="2 Slot title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="slot2_description" id="title" placeholder="2 Slot description" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="slot3_title" id="title" placeholder="3 Slot title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="slot3_description" id="title" placeholder="3 Slot description" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="picture_title" id="title" placeholder="Picture title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="picture_body" id="title" placeholder="Picture body" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_title" id="title" placeholder="Video title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_description" id="title" placeholder="Video description" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot1_title" id="title" placeholder="Video slot1 title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot1_description" id="title" placeholder="Video slot1 description" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot2_title" id="title" placeholder="Video slot2 title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot2_description" id="title" placeholder="Video slot2 description" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot3_title" id="title" placeholder="Video slot3 title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot3_description" id="title" placeholder="Video slot3 description" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot4_title" id="title" placeholder="Video slot4 title" />
-    </div>
-    <div class="name-item">
-          <input value="" type="text" name="video_slot4_description" id="title" placeholder="Video slot4 description" />
-    </div>
-    <button type="submit" class="btn btn-outline-primary">Edit</button>
-            </form>
-        </div>
-        --}}
 
         </div>
     </main>

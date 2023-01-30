@@ -87,13 +87,34 @@
 		                	</li>
 		                </ul>
 		            </li>
-
                     <li>
-						<a href="{{route('admin-messages')}}" class="ttr-material-button">
+						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-email"></i></span>
-		                	<span class="ttr-label">Mailbox</span>
+		                	<span class="ttr-label">Contacts</span>
+		                	<span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
 		                </a>
+		                <ul>
+                            <li>
+                                <a href="{{route('admin-messages')}}" class="ttr-material-button">
+                                <span class="ttr-icon"></span>
+                                <span class="ttr-label">Mailbox</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin-contact')}}" class="ttr-material-button">
+                                <span class="ttr-icon"></span>
+                                <span class="ttr-label">Contact</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin-templates')}}" class="ttr-material-button">
+                                <span class="ttr-icon"></span>
+                                <span class="ttr-label">Templates</span>
+                                </a>
+                            </li>
+		                </ul>
 		            </li>
+
 					<li>
 						<a href="#" class="ttr-material-button">
 							<span class="ttr-icon"><i class="ti-calendar"></i></span>

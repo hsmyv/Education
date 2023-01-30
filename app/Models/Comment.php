@@ -14,7 +14,6 @@ class Comment extends Model
     public function post()
     {
         return $this->belongsTo(Post::class, 'commentable_id');
-
     }
 
     public function replies()
@@ -24,9 +23,6 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')->withDefault(['name', 'Deleted Profile']);
     }
-
-
-
 }

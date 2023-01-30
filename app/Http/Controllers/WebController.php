@@ -7,6 +7,11 @@ use App\Models\Course;
 use App\Models\AboutInformations;
 class WebController extends Controller
 {
+
+    public function example()
+    {
+        return view('example');
+    }
     public function courses()
     {
         return view('pages.courses', [
