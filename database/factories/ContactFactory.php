@@ -21,7 +21,7 @@ class ContactFactory extends Factory
             'encryption' => 'tls',
             'port'       => '587',
             'username'   => 'hsmusayev@gmail.com',
-            'password'   => 'rzloxsbsdlwoxpwc',
+            'password'   => '',
         ];
     }
 }
