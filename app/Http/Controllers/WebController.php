@@ -5,8 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\AboutInformations;
+use App\Models\Post;
+use App\Models\User;
+
 class WebController extends Controller
 {
+
+    public function index()
+    {
+        $information = AboutInformations::where('id', 1)->first();
+         return view('pages.index', [
+        'users' => User::all(),
+        'posts' => Post::latest()->take(4)->get(),
+        'courses' => Course::all(),
+        'information' => $information
+         ]);
+    }
+
 
     public function example()
     {

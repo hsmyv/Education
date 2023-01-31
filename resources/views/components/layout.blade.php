@@ -19,9 +19,9 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 
     <!--
@@ -37,11 +37,11 @@
 			<link rel="stylesheet" href="/css/jquery-ui.css">
 			<link rel="stylesheet" href="/css/main.css">
            <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <link rel="stylesheet" type="text/css" href="/assets/css/assets.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/typography.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/shortcodes/shortcodes.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-	    <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+        <link rel="stylesheet" type="text/css" href="/assets/assets/css/assets.css">
+        <link rel="stylesheet" type="text/css" href="/assets/assets/css/typography.css">
+        <link rel="stylesheet" type="text/css" href="/assets/assets/css/shortcodes/shortcodes.css">
+        <link rel="stylesheet" type="text/css" href="/assets/assets/css/style.css">
+	    <link class="skin" rel="stylesheet" type="text/css" href="assets/assets/css/color/color-1.css">
 
 		</head>
 		<body>
@@ -65,7 +65,7 @@
 			<script src="/js/mail-script.js"></script>
 			<script src="/js/main.js"></script>
 
-            
+
             <!--
             <script src="/assets/js/jquery.min.js"></script>
             <script src="/assets/vendors/bootstrap/js/popper.min.js"></script>
@@ -83,7 +83,7 @@
             <script src="/assets/js/functions.js"></script>
             <script src="/assets/js/contact.js"></script>
             <script src="/assets/vendors/switcher/switcher.js"></script>-->
-            <script>
+            {{-- <script>
 function callAjax(e){
     $('#loaderIcon').show();
     $.ajax({
@@ -100,5 +100,5 @@ function callAjax(e){
         }
     });
 }
-</script>
+</script> --}}
 	</html>

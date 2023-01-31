@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
@@ -61,6 +62,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function($view){
           $view->with('categories', PostCategory::all());
             });
+            
+        View::composer('create-course', function ($view) {
+            $view->with('categories', Category::all());
+        });
 
         View::composer('*', function($view){
           $view->with('limitcategories', PostCategory::inRandomOrder()->limit(3)->get());

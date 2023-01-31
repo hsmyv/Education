@@ -27,14 +27,7 @@ use App\Models\Course;
 
 
 Route::redirect('home', '/');
-Route::get('/', function () {
-    return view('pages.index', [
-        'users' => User::all(),
-        'posts' => Post::latest()->take(4)->get(),
-        'courses' => Course::all()
 
-    ]);
-})->name('home');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['can:admin']], function () {
     Route::get('create-course',            [AdminController::class, 'create_course'])->name('create-course');
@@ -68,7 +61,7 @@ Route::get('courses/{course:slug}', [CourseController::class,  'show'])->name('s
 Route::post('courses/create',  [CourseController::class, 'create'])->name('create');
 Route::delete('courses/{course}/delete',   [CourseController::class, 'destroy'])->name('delete-course')->middleware('auth');
 
-
+Route::get('/',               [WebController::class,  'index'])->name('home');
 Route::get('about',           [WebController::class,  'about'])->name('about');
 Route::get('events',          [WebController::class,  'events'])->name('events');
 Route::get('events-details',  [WebController::class,  'events_details'])->name('events-details');

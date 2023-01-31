@@ -73,7 +73,7 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Select Category</label>
                                                 <select name="category_id" id="category_id">
-                                                @foreach ($categories as $category )
+                                                @foreach (\App\Models\Category::all() as $category )
                                                     <option value="{{$category->id}}"
                                                         {{old('category_id') == $category->id ? 'selected': ''}}>{{ucwords($category->name)}}</option>
                                                     @endforeach
