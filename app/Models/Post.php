@@ -14,9 +14,33 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model implements HasMedia
 {
+    public $timestamps = true;
     use HasFactory, Notifiable, InteractsWithMedia, Searchable;
     protected $with = ['category' ,'user'];
 
+    public function scopeFilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+            $query->where(fn ($query) =>
+                $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('body', 'like', '%'.  $search  . '%')
+            )
+    );
+    $query->when($filters['category'] ?? false, fn ($query, $category) =>
+            $query->whereHas('category', fn($query) =>
+                $query->orWhere('slug', $category)
+                ->orWhere('published_at', '<', now())
+            )
+    );
+
+        $query->when($filters['user'] ?? false, fn ($query, $category) =>
+            $query->whereHas('user', fn($query) =>
+                $query->where('name', $category)
+                ->orWhere('published_at', '<', now())
+            )
+    );
+    }
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault([
@@ -49,12 +73,12 @@ class Post extends Model implements HasMedia
 
     public function next(){
     // get next user
-    return Post::where('id', '>', $this->id)->orderBy('id','asc')->first();
+    return Post::where('id', '>', $this->id)->where('published_at', '<', now())->orderBy('id','asc')->first();
 
 }
     public  function previous(){
         // get previous  user
-        return Post::where('id', '<', $this->id)->orderBy('id','desc')->first();
+        return Post::where('id', '<', $this->id)->where('published_at', '<', now())->orderBy('id','desc')->first();
 
     }
 

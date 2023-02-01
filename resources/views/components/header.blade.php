@@ -14,13 +14,13 @@
                   <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
                       <ul>
                           @auth
-                              <li>Welcome {{ auth()->user()->name }}!</li>
-                              <li><form method="POST" action="{{route('logout')}}">
+                              <li style="color:white">Welcome {{ auth()->user()->name }}!</li>
+                              <li><form method="POST" action="{{route('logout')}}" style="display: inline">
                                         @csrf
-                                        <button href="{{route('logout')}}"type="submit">Logout</button>
+                                        <button style ="color:white" href="{{route('logout')}}"type="submit">Logout</button>
                                         </form></li>
                           @else
-                              <li><a href="{{ route('show-login') }}">Login</a></li>
+                              <li><a  href="{{ route('show-login') }}">Login</a></li>
                               <li><a href="{{ route('show-register') }}">Register</a></li>
                           @endauth
                           <li><a href="">Az</a></li>

@@ -44,3 +44,9 @@ function sendUserEmail($user, $password, $template)
     }
     return true;
 }
+
+
+    function words($value, $words = 100, $end = '...')
+    {
+        return Str::limit($value, $words, $end);
+    }

@@ -1,6 +1,6 @@
 /*
 ======================================
-  * CSS TABLE CONTENT *  
+  * CSS TABLE CONTENT *
 ======================================
 1. HEADER
 2. HEADER TOPBAR
@@ -16,7 +16,7 @@
 12. FOOTER
 13. INNER CONTENT CSS
 ======================================
-  * END TABLE CONTENT *  
+  * END TABLE CONTENT *
 ======================================
 */
 
@@ -3355,7 +3355,7 @@ button.back-to-top {
 }
 
 .pricingtable-title {
- 
+
    background-color: rgba(255, 255, 255, 0.2);
     padding: 10px 10px 5px 10px;
 }

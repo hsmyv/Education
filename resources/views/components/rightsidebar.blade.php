@@ -31,11 +31,11 @@
 									<ul class="cat-list">
                                         @foreach ($categories as $category)
 
-                                            @if($category->posts->count() > 0)
+                                            @if($category->posts->where('published_at', '<', now())->count() > 0)
                                             <li>
                                              <a href="{{route('getcategory', $category->slug)}}" class="d-flex justify-content-between">
                                              <p>{{$category->name}}</p>
-                                             <p>{{$category->posts->count()}}</p>
+                                             <p>{{$category->posts->where('published_at', '<', now())->count()}}</p>
                                              </a>
                                              </li>
                                             @endif

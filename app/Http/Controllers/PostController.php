@@ -20,8 +20,10 @@ class PostController extends Controller
     }
       public function index(Request $request)
     {
-        $posts= Post::search($request->search)->get();
 
+        //  $posts= Post::search($request->search)->get();
+        // $posts= Post::where('published_at', '<', now())->get();
+        $posts = Post::latest()->filter(request(['search', 'category', 'user']))->where('published_at', '<', now())->get();
         return view('pages.blog', [
             'posts' => $posts,
 
@@ -32,23 +34,24 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->increment('views');
-        return view('pages.post', ['post' => $post, 'posts' => Post::all()]);
+         $posts = Post::where('published_at', '<', now())->get();
+        return view('pages.post', ['post' => $post, 'posts' =>$posts]);
     }
 
 
     public function userindex(User $author)
       {
-        return view ('pages.blog' , ['posts' => $author->posts]);
+        return view ('pages.blog' , ['posts' => $author->posts->where('published_at', '<', now())]);
       }
 
-      public function categoryindex(PostCategory $category)
+      public function categoryindex(PostCategory $category, Request $request)
       {
-         return view ('pages.blog' , ['posts' => $category->posts]);
+         return view ('pages.blog' , ['posts' => $category->posts->where('published_at', '<', now())]);
       }
 
    public function store(Request $request, Post $post)
-
     {
+
             $attributes = $request->validate([
                 'title' => 'required',
                 'slug'  => ['required', Rule::unique('posts', 'slug')],
@@ -58,13 +61,16 @@ class PostController extends Controller
             ]);
 
             $attributes['user_id'] = Auth()->id();
-
+            $attributes['published_at'] = $request->date;
            $post = Post::create($attributes);
+
             if($request->hasFile('image')){
             $post->addMediaFromRequest('image')
                     ->usingName($request->title)
                     ->toMediaCollection('images');
           }
+
+
             return redirect()->route('admin-posts')->with('success', 'Your post published successfully');
 
     }
@@ -87,7 +93,7 @@ class PostController extends Controller
             ->toMediaCollection('images');
         }
 
-        return redirect()->route('admin-posts', $post->slug)->with('success', 'Your post has been updated');
+         return redirect()->route('admin-posts', $post->slug)->with('success', 'Your post has been updated');
     }
 
      public function destroy(Post $post)

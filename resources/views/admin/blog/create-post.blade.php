@@ -42,6 +42,12 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="form-group col-6">
+										<label class="col-form-label">Post slug</label>
+										<div>
+                                            <input name="date" class="form-control" type="date"  />
+										</div>
+									</div>
 
 									<div class="seperator"></div>
 

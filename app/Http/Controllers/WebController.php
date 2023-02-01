@@ -16,7 +16,7 @@ class WebController extends Controller
         $information = AboutInformations::where('id', 1)->first();
          return view('pages.index', [
         'users' => User::all(),
-        'posts' => Post::latest()->take(4)->get(),
+        'posts' => Post::latest()->take(4)->where('published_at', '<', now())->get(),
         'courses' => Course::all(),
         'information' => $information
          ]);

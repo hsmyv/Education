@@ -62,7 +62,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function($view){
           $view->with('categories', PostCategory::all());
             });
-            
+
         View::composer('create-course', function ($view) {
             $view->with('categories', Category::all());
         });
@@ -72,7 +72,7 @@ class AppServiceProvider extends ServiceProvider
             });
 
         View::composer('*', function($view){
-          $view->with('popularposts', Post::get()->sortByDesc('views')->take(5));
+          $view->with('popularposts', Post::get()->sortByDesc('views')->where('published_at', '<', now())->take(5));
             });
 
 

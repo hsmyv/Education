@@ -68,7 +68,8 @@
 										</div>
 										<div class="detials">
 											<p>Prev Post</p>
-											<a href="{{route('show-post', $post->previous()->slug ?? 'Null')}}"><h4>{{$post->previous()->title ?? 'Null'}}</h4></a>
+											<a href="{{route('show-post', $post->previous()->slug ?? 'Null')}}">
+                                                <h4> {{words($post->previous()->title, $limit = 10, $end = '...')}}</h4></a>
                                         </div>
 									</div>
                                     @endif
@@ -76,7 +77,7 @@
 									<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 										<div class="detials">
 											<p>Next Post</p>
-											<a href="{{route('show-post', $post->next()->slug ?? 'Null')}}"><h4>{{$post->next()->title ?? 'Null'}}</h4></a>
+											<a href="{{route('show-post', $post->next()->slug ?? 'Null')}}"><h4>{{words($post->next()->title, $limit = 10, $end = '...')}}</h4></a>
 
 										</div>
 										<div class="arrow">
