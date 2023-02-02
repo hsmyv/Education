@@ -15,7 +15,7 @@
 												<img class="img-fluid" width="50" height="50" src="{{$post->getFirstMediaUrl('images')}}" alt="">
 											</div>
 											<div class="details">
-												<a href="{{route('show-post', $post->slug)}}"><h6>{{$post->title}}</h6></a>
+												<a href="{{route('show-post', $post->slug)}}"><h6>{{words($post->title, $limit = 50, $end = '...')}}</h6></a>
 												<p>{{$post->created_at->diffForHumans()}}</p>
                                                 <p>views: {{$post->views}}</p>
 											</div>

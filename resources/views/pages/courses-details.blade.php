@@ -86,7 +86,7 @@
 									</div>
 									<div class="col-md-12 col-lg-8">
 										<h5 class="m-b5">Certification</h5>
-										<p> {{$course->certification}}</p>
+										<p> {$course->certification}}</p>
 										<h5 class="m-b5">Learning Outcomes</h5>
                                         <br>
 										<ul class="list-checked primary">
@@ -100,7 +100,7 @@
 									</div>
 								</div>
 							</div>
-                            
+
 							<div class="m-b30" id="curriculum">
 								<h4>Curriculum</h4>
 								<ul class="curriculum-list">
