@@ -53,9 +53,9 @@
                 </div>
 			</section> --}}
             <x-courses.popular-courses :courses="$courses"/>
-            <div align="center">
+            {{-- <div align="center">
                 <a  href="#" class="primary-btn text-uppercase mx-auto">Load More Courses</a>
-                </div>
+                </div> --}}
 			<!-- End popular-courses Area -->
 
 			<!-- Start search-course Area -->

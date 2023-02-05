@@ -14,7 +14,7 @@
                   <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
                       <ul>
                           @auth
-                              <li style="color:white">Welcome {{ auth()->user()->name }}!</li>
+                              <li style="color:white"> {{ auth()->user()->name }}!</li>
                               <li><form method="POST" action="{{route('logout')}}" style="display: inline">
                                         @csrf
                                         <button style ="color:white" href="{{route('logout')}}"type="submit">Logout</button>
@@ -23,8 +23,8 @@
                               <li><a  href="{{ route('show-login') }}">Login</a></li>
                               <li><a href="{{ route('show-register') }}">Register</a></li>
                           @endauth
-                          <li><a href="">Az</a></li>
-                          <li><a href="">En</a></li>
+                          <a href=""><span class=""></span> <span class="text">Az</span></a>
+			  				<a href=""><span class=""></span> <span class="text">En</span></a>
 
                           <li><a href="{{route('admin-index')}}"><i class="fa fa-bell">@if(auth()->check()) {{auth()->user()->unreadnotifications->count() > 0 ? auth()->user()->unreadnotifications->count() : ''}} @endif</a></i></li>
 
