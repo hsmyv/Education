@@ -17,4 +17,13 @@ class Video extends Model
   {
     return $this->belongsTo(Course::class);
   }
+
+    public function scopeContainingVideoPath($query)
+    {
+        return $query->where('video', 'LIKE', '%videos/firstlevel/%');
+    }
+    public function scopeContainingVideo2Path($query)
+    {
+        return $query->where('video', 'LIKE', '%videos/secondlevel/%');
+    }
 }

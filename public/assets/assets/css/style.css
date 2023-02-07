@@ -23,6 +23,10 @@
 /*=================================
 	1. HEADER
 =================================*/
+.video-container {
+    display: none;
+}
+
 .bg-fix {
     background-attachment: fixed;
     background-size: cover;

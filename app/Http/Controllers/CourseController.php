@@ -26,7 +26,7 @@ class CourseController extends Controller
             'skill_level'       => 'required',
             'language'          => 'required',
             'assessments'       => 'required',
-            'description'       => 'required|max:150',
+            'description'       => 'required',
             'certification'     => 'required',
             'learning_outcomes' => 'required',
             'category_id'       => ['required', Rule::exists('categories', 'id')],
@@ -35,40 +35,53 @@ class CourseController extends Controller
 
         $attributes['user_id'] = Auth()->id();
 
-       $course = Course::create($attributes);
-            if($request->hasFile('image')){
+        $course = Course::create($attributes);
+        if ($request->hasFile('image')) {
             $course->addMediaFromRequest('image')
-                    ->usingName($request->title)
-                    ->toMediaCollection('images');
-          }
+                ->usingName($request->title)
+                ->toMediaCollection('images');
+        }
 
 
-            $title = $request->course_title;
-            $videos = $request->file('videos');
-                for($i=0; $i < count($title); $i++)
-                {
+        $title = $request->course_title;
+        $videos = $request->file('videos');
+        for ($i = 0; $i < count($title); $i++) {
 
-                    $path = $videos[$i]->store('videos', ['disk' =>      'my_files']);
-                    $datasave = [
-                    'course_id' => 1,
-                    'title'    => $title[$i],
-                    'video'      => $path
-                    ];
-                    $getID3 = new \getID3;
-                    $file = $getID3->analyze($path);
-                    $duration = date('H:i:s', $file['playtime_seconds']);
-                    $datasave['duration'] = $duration;
-                    Video::create($datasave);
-                }
+            $path = $videos[$i]->store('videos/firstlevel', ['disk' =>      'my_files']);
+            $datasave = [
+                'course_id' => 7,
+                'title'    => $title[$i],
+                'video'      => $path
+            ];
+            $getID3 = new \getID3;
+            $file = $getID3->analyze($path);
+            $duration = date('H:i:s', $file['playtime_seconds']);
+            $datasave['duration'] = $duration;
+            Video::create($datasave);
+        }
 
-        return redirect()->route('courses')->with('success', "The course published successfully" );
+        $videos2 = $request->file('videos2');
 
+        for ($i = 0; $i < count($title); $i++) {
 
+            $path = $videos2[$i]->store('videos/secondlevel', ['disk' =>      'my_files']);
+            $datasave = [
+                'course_id' => 7,
+                'title'    => $title[$i],
+                'video'      => $path
+            ];
+            $getID3 = new \getID3;
+            $file = $getID3->analyze($path);
+            $duration = date('H:i:s', $file['playtime_seconds']);
+            $datasave['duration'] = $duration;
+            Video::create($datasave);
+        }
+        return redirect()->route('courses')->with('success', "The course published successfully");
     }
 
-     public function destroy(Course $course)
+    public function destroy(Course $course)
     {
-        $course->delete();
+        // $course->delete();
         return back()->with('success', 'Course Canceled!');
     }
 }

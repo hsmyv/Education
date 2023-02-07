@@ -25,7 +25,6 @@
                             </a>
                             <p class="excerpt">
                                 {{ words($course->description, $limit = 50, $end = '...') }}
-
                             </p>
                         </div>
                     </div>

@@ -37,7 +37,7 @@
                                 </h4>
                             </a>
                             <p class="excerpt">
-                                {{words($course->description, $limit = 15, $end = '...')}}
+                                {{words($course->description, $limit = 35, $end = '...')}}
 
                             </p>
                         </div>
