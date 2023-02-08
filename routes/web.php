@@ -58,7 +58,10 @@ Route::get('forget-password', [UserController::class, 'createforgetpassword'])->
 
 Route::get('courses',         [WebController::class,  'courses'])->name('courses');
 Route::get('courses/{course:slug}', [CourseController::class,  'show'])->name('show');
+Route::get('courses/{course}/edit',  [CourseController::class,   'edit'])->name('course.edit');
+Route::put('courses/{course}/update',  [CourseController::class, 'update'])->name('course.update');
 Route::post('courses/create',  [CourseController::class, 'create'])->name('create');
+
 Route::delete('courses/{course}/delete',   [CourseController::class, 'destroy'])->name('delete-course')->middleware('auth');
 
 Route::get('/',               [WebController::class,  'index'])->name('home');

@@ -52,7 +52,6 @@
 
 </head>
 <body class="ttr-opened-sidebar ttr-pinned-sidebar">
-
     {{$slot}}
 
 

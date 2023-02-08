@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Contact;
+use App\Models\Video;
 
 function getError()
 {
@@ -46,7 +47,17 @@ function sendUserEmail($user, $password, $template)
 }
 
 
-    function words($value, $words = 100, $end = '...')
-    {
-        return Str::limit($value, $words, $end);
-    }
+function words($value, $words = 100, $end = '...')
+{
+    return Str::limit($value, $words, $end);
+}
+
+function getTotalDuration($id)
+{
+
+    $total_duration_in_hours = Video::selectRaw('CEIL(SUM(TIME_TO_SEC(duration)) / 3600) as total_duration_in_hours')
+        ->where('course_id', $id)
+        ->first()
+        ->total_duration_in_hours;
+    return "{$total_duration_in_hours} hours";
+}

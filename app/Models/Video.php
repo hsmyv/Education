@@ -26,4 +26,5 @@ class Video extends Model
     {
         return $query->where('video', 'LIKE', '%videos/secondlevel/%');
     }
+
 }

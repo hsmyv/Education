@@ -16,8 +16,11 @@
 				<!-- Your Profile Views Chart -->
 				<div class="col-lg-12 m-b30">
 					<div class="widget-box">
-						
+
 						<div class="widget-inner">
+                            @if($courses->count() <= 0)
+                            Not found any course!
+                            @else
                             @foreach ($courses as $course )
 
 
@@ -69,8 +72,10 @@
 											<p> {{$course->description}} </p>
 										</div>
 										<div class="col-md-12">
-											<a href="#" class="btn green radius-xl outline">Approve</a>
-                                             <form method="POST" action="{{route('delete-course', $course->id)}}">
+											<a href="#" class="btn blue radius-xl outline">Approve</a>
+                                            <a href="{{route('course.edit', $course->id)}}" class="btn green radius-xl outline">Edit</a>
+
+                                             <form method="POST" action="{{route('delete-course', $course->id)}}" style="display: inline">
                                                 @csrf
                                                 @method('DELETE')
                                             <button class="btn red outline radius-xl">Cancel</button>
@@ -80,6 +85,7 @@
 								</div>
 							</div>
                              @endforeach
+                             @endif
 						</div>
 					</div>
 				</div>

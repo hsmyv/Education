@@ -83,7 +83,9 @@
                                         <li><i class="ti-help-alt"></i> <span class="label">Quizzes</span> <span
                                                 class="value">1</span></li>
                                         <li><i class="ti-time"></i> <span class="label">Duration</span> <span
-                                                class="value">60 hours</span></li>
+                                                class="value">
+                                                {{ getTotalDuration($course->id) }}
+                                            </span></li>
                                         <li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span
                                                 class="value">{{ $course->skill_level }}</span></li>
                                         <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span
@@ -123,10 +125,14 @@
                                             <li>
                                                 <div class="curriculum-list-box">
                                                     <span>Lesson {{ $i++ }}.</span> {{ $video->title }}
+                                                    <button class="toggle-button" onclick="toggleVideo({{$i}})">
+                                                        <i class="fa fa-play-circle"  id="toggle-icon-{{$i}}"></i>
+                                                    </button>
                                                 </div>
                                                 <span>{{ $video->duration }} minutes</span>
                                             </li>
                                             <br>
+                                        <div class="video-container video-container-{{ $i }}">
                                             <div>
                                                 <video width="320" height="240" controls>
                                                     <source src="{{ URL::asset($video->video) }}" type="video/mp4">
@@ -145,11 +151,14 @@
                                             <li>
                                                 <div class="curriculum-list-box">
                                                     <span>Lesson {{ $i++ }}.</span> {{ $video->title }}
+                                                    <button class="toggle-button" onclick="toggleVideo2({{$i}})">
+                                                        <i class="fa fa-play-circle" id="toggle-icon-{{$i}}"></i>
+                                                    </button>
                                                 </div>
                                                 <span>{{ $video->duration }} minutes</span>
                                             </li>
                                             <br>
-                                            <div>
+                                            <div class="video-container video-container2-{{ $i }}">
                                                 <video width="320" height="240" controls>
                                                     <source src="{{ URL::asset($video->video) }}" type="video/mp4">
                                                     Your browser does not support the video tag.
@@ -367,3 +376,21 @@
     <!-- Content END-->
     </div>
 </x-layout>
+<style>
+    .video-container {
+        display: none;
+    }
+</style>
+
+<script>
+  function toggleVideo(id) {
+    var videoContainer = document.querySelector('.video-container-' + id);
+    videoContainer.style.display = (videoContainer.style.display === 'none') ? 'block' : 'none';
+  }
+</script>
+<script>
+  function toggleVideo2(id) {
+    var videoContainer = document.querySelector('.video-container2-' + id);
+    videoContainer.style.display = (videoContainer.style.display === 'none') ? 'block' : 'none';
+  }
+</script>
