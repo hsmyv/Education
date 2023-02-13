@@ -61,3 +61,7 @@ function getTotalDuration($id)
         ->total_duration_in_hours;
     return "{$total_duration_in_hours} hours";
 }
+function setActiveHeader($header, $output = "color:red")
+{
+    return request()->routeIs($header) == $header ? $output : '';
+}

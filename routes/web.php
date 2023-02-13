@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ckeditorController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EventController;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Course;
@@ -66,7 +67,11 @@ Route::delete('courses/{course}/delete',   [CourseController::class, 'destroy'])
 
 Route::get('/',               [WebController::class,  'index'])->name('home');
 Route::get('about',           [WebController::class,  'about'])->name('about');
-Route::get('events',          [WebController::class,  'events'])->name('events');
+
+
+
+Route::resource('events', EventController::class);
+
 Route::get('events-details',  [WebController::class,  'events_details'])->name('events-details');
 Route::get('contact',         [WebController::class,  'contact'])->name('contact');
 Route::get('example',         [WebController::class,  'example'])->name('example');

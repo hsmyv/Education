@@ -83,7 +83,7 @@
 
 		                	</li>
 		                	<li>
-		                		<a href="#" class="ttr-material-button"><span class="ttr-label">Create Event</span></a>
+		                		<a href="{{route('events.create')}}" class="ttr-material-button"><span class="ttr-label">Create Event</span></a>
 		                	</li>
 		                </ul>
 		            </li>

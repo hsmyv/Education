@@ -45,13 +45,7 @@ class WebController extends Controller
         ]);
     }
 
-       public function events()
-    {
-        return view('pages.events', [
-            'eventsname' => 'Events'
-        ]);
-    }
-
+  
     public function events_details()
     {
         return view('pages.events-details');

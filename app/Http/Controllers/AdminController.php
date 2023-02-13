@@ -35,6 +35,15 @@ class AdminController extends Controller
         return view('admin.mail.messages');
     }
 
+    public function events_index(){
+        return view('admin.events.index');
+    }
+    public function events_create()
+    {
+        return view('admin.events.create');
+    }
+
+
     public function contact()
     {
         $contact = Contact::where('id', 1)->first();

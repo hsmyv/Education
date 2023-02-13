@@ -52,12 +52,12 @@
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="{{ route('about') }}">About</a></li>
-                    <li><a href="{{ route('courses') }}">Courses</a></li>
-                    <li><a href="{{ route('events') }}">Events</a></li>
-                    <li><a href="{{ route('blog') }}">Blog</a></li>
-                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                    <li><a style="{{setActiveHeader("home")}}" href="/">Home</a></li>
+                    <li><a style="{{setActiveHeader("about")}}" href="{{ route('about') }}">About</a></li>
+                    <li><a style="{{setActiveHeader("courses")}}"href="{{ route('courses') }}">Courses</a></li>
+                    <li><a style="{{setActiveHeader("events")}}" href="{{ route('events.index') }}">Events</a></li>
+                    <li><a style="{{setActiveHeader("blog")}}" href="{{ route('blog') }}">Blog</a></li>
+                    <li><a style="{{setActiveHeader("contact")}}" href="{{ route('contact') }}">Contact</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
