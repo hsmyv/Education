@@ -27,6 +27,12 @@ class Event extends Model implements HasMedia
         'views'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id')->withDefault([
+            'name'  => 'Deleted Profile'
+        ]);
+    }
 
     public function registerMediaCollections(): void
     {
@@ -38,5 +44,16 @@ class Event extends Model implements HasMedia
 
         $this->addMediaCollection('downloads')
         ->singleFile();
+    }
+
+    public function next()
+    {
+        // get next user
+        return Event::where('id', '>', $this->id)->where('created_at', '<', now())->orderBy('id', 'asc')->first();
+    }
+    public  function previous()
+    {
+        // get previous  user
+        return Event::where('id', '<', $this->id)->where('created_at', '<', now())->orderBy('id', 'desc')->first();
     }
 }

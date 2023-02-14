@@ -45,12 +45,6 @@ class WebController extends Controller
         ]);
     }
 
-  
-    public function events_details()
-    {
-        return view('pages.events-details');
-    }
-
       public function contact()
     {
         return view('pages.contact');

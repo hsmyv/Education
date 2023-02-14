@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EventStoreRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class EventController extends Controller
 {
@@ -15,8 +16,10 @@ class EventController extends Controller
      */
     public function index()
     {
+        $events = Event::all();
         return view('pages.events', [
-            'eventsname' => 'Events'
+            'eventsname' => 'Events',
+            'events' => $events
         ]);
     }
 
@@ -56,9 +59,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        //
+        $event->increment('views');
+        return view('pages.events.show', ['event' => $event]);
     }
 
     /**
@@ -67,9 +71,9 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        //
+
     }
 
     /**
@@ -79,9 +83,30 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-        //
+        $attributes = $request->validate([
+            'title'      => ['required'],
+            'slug'     => ['required',  Rule::unique('events', 'slug')->ignore($event->id)],
+            'body'      => ['required'],
+            // 'start_date' => ['required'],
+            // 'end_date'  => ['required'],
+            'ticket_price' => ['required'],
+            'place'       => ['required'],
+            'street' => ['required'],
+            'city' => ['required'],
+            'company' => ['required'],
+
+        ]);
+        $event->update($attributes);
+
+        if ($request->hasFile('image')) {
+            $event->addMediaFromRequest('image')
+                ->usingName($request->title)
+                ->toMediaCollection('images');
+        }
+
+        return redirect()->route('admin.events.index')->with('message', 'Event Updated succesfully');
     }
 
     /**
@@ -90,8 +115,9 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('admin.events.index')->with('message', 'Event Deleted Successfully');
     }
 }

@@ -79,7 +79,7 @@
 		                </a>
 		                <ul>
 		                	<li>
-		                		<a href="#" class="ttr-material-button"><span class="ttr-label">Events</span></a>
+		                		<a href="{{route('admin.events.index')}}" class="ttr-material-button"><span class="ttr-label">Events</span></a>
 
 		                	</li>
 		                	<li>

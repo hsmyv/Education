@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Comment;
 use App\Models\AboutInformations;
 use App\Models\Contact;
+use App\Models\Event;
 use App\Models\Template;
 use Input;
 
@@ -36,13 +37,21 @@ class AdminController extends Controller
     }
 
     public function events_index(){
-        return view('admin.events.index');
+        $events = Event::all();
+        return view('admin.events.index', [
+            'events' => $events,
+        ]);
     }
     public function events_create()
     {
         return view('admin.events.create');
     }
 
+    public function events_destroy(Event $event)
+    {
+        $event->delete();
+        return redirect()->route('admin.events.index')->with('message', 'Event Deleted Successfully');
+    }
 
     public function contact()
     {
@@ -92,6 +101,12 @@ class AdminController extends Controller
         $information = AboutInformations::where('id', 1)->first();
         return view('admin.edit.about', ['information' => $information]);
     }
+
+    public function events_edit(Event $event)
+    {
+        return view('admin.events.edit', compact('event'));
+    }
+
     public function edit_about_informations(Request $request, AboutInformations $aboutInformations)
     {
         //$form = request()->all();

@@ -48,6 +48,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['can:admin']], function 
     Route::patch('/contact-edit',          [ContactController::class,'contact_edit'])->name('contact-edit');
     Route::get('edit-about',               [AdminController::class,  'edit_about'])->name('edit-about');
     Route::post('editabout/{AboutInformations}',          [AdminController::class,  'edit_about_informations'])->name('edit-information');
+    Route::get('events',                   [AdminController::class, 'events_index'])->name('admin.events.index');
+    Route::get('events/{event}/edit',      [AdminController::class, 'events_edit'])->name('admin.events.edit');
+    Route::delete('events/{event}',        [AdminController::class, 'events_destroy'])->name('admin.events.destroy');
+
+
 });
 
 Route::get('login',           [UserController::class, 'createlogin'])->name('show-login')->middleware('guest');

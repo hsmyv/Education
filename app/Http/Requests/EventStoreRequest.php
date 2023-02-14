@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class EventStoreRequest extends FormRequest
 {
@@ -25,7 +27,7 @@ class EventStoreRequest extends FormRequest
     {
         return [
             'title'      => ['required'],
-            'slug'     => ['required'],
+            'slug'     => ['required',  Rule::unique('events', 'slug')],
             'body'      => ['required'],
             'start_date' => ['required'],
             'end_date'  => ['required'],

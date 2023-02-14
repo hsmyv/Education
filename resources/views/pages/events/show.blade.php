@@ -8,7 +8,7 @@
 							<h1 class="text-white">
 								Event Details
 							</h1>
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="event-details.html"> Event Details</a></p>
+							<p class="text-white link-nav"><a href="{{route('home')}}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="event-details.html"> Event Details</a></p><span class="lnr lnr-arrow-right"></span> <a href="#"> {{$event->title}}</a></p>
 						</div>
 					</div>
 				</div>
@@ -21,18 +21,16 @@
 					<div class="row">
 						<div class="col-lg-8 event-details-left">
 							<div class="main-img">
-								<img class="img-fluid" src="img/event-details-img.jpg" alt="">
+								<img class="img-fluid" src="{{$event->getFirstMediaUrl('images')}}" alt="">
 							</div>
 							<div class="details-content">
 								<a href="#">
-									<h4>Designing Effective Slider images</h4>
+									<h4>{{$event->title}}</h4>
 								</a>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolorema gna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo doconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-								</p>
+                                    {!!$event->body!!}
+                                </p>
+
 							</div>
 							<div class="social-nav row no-gutters">
 								<div class="col-lg-6 col-md-6 ">
@@ -44,9 +42,13 @@
 									</ul>
 								</div>
 								<div class="col-lg-6 col-md-6 navs">
-									<a href="#" class="nav-prev"><span class="lnr lnr-arrow-left"></span>Prev Event</a>
-									<a href="#" class="nav-next">Next Event<span class="lnr lnr-arrow-right"></span></a>
-								</div>
+                                    @if($event->previous())
+									<a href="{{route('events.show', $event->previous())}}" class="nav-prev"><span class="lnr lnr-arrow-left"></span>Prev Event</a>
+                                    @endif
+                                    @if($event->next())
+                                    <a href="{{route('events.show', $event->next())}}" class="nav-next">Next Event<span class="lnr lnr-arrow-right"></span></a>
+                                    @endif
+                                </div>
 							</div>
 						</div>
 						<div class="col-lg-4 event-details-right">
@@ -55,15 +57,15 @@
 								<ul class="mt-10">
 									<li class="justify-content-between d-flex">
 										<span>Start date</span>
-										<span>15th April, 2018</span>
+										<span>{{$event->start_date}}</span>
 									</li>
 									<li class="justify-content-between d-flex">
 										<span>End date</span>
-										<span>18th April, 2018</span>
+										<span>{{$event->end_date}}</span>
 									</li>
 									<li class="justify-content-between d-flex">
 										<span>Ticket Price</span>
-										<span>Free of Cost</span>
+										<span>{{$event->ticket_price}}</span>
 									</li>
 								</ul>
 							</div>
@@ -72,15 +74,15 @@
 								<ul class="mt-10">
 									<li class="justify-content-between d-flex">
 										<span>Place</span>
-										<span>Main Hallroom</span>
+										<span>{{$event->place}}</span>
 									</li>
 									<li class="justify-content-between d-flex">
 										<span>Street</span>
-										<span>Bullevard Street</span>
+										<span>{{$event->street}}</span>
 									</li>
 									<li class="justify-content-between d-flex">
 										<span>City</span>
-										<span>Santa Monica</span>
+										<span>{{$event->city}}</span>
 									</li>
 								</ul>
 							</div>
@@ -89,15 +91,15 @@
 								<ul class="mt-10">
 									<li class="justify-content-between d-flex">
 										<span>Company</span>
-										<span>Colorlib</span>
+										<span>{{$event->company}}</span>
 									</li>
 									<li class="justify-content-between d-flex">
 										<span>Street</span>
-										<span>Bullevard Street</span>
+										<span>{{$event->street}}</span>
 									</li>
 									<li class="justify-content-between d-flex">
 										<span>City</span>
-										<span>Santa Monica</span>
+										<span>{{$event->city}}</span>
 									</li>
 								</ul>
 							</div>
