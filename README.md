@@ -6,9 +6,13 @@ EDUCATION
 ![aboutus](https://user-images.githubusercontent.com/111653544/219671654-332c46b7-5163-4bd2-a4be-3de51c101514.PNG)
 ![blogs](https://user-images.githubusercontent.com/111653544/219671705-6d5906f3-4246-476c-8bff-9f62ee610665.PNG)
 ![blogs2](https://user-images.githubusercontent.com/111653544/219671716-83824186-7371-4583-8945-761e24372fa1.PNG)
+![blog comment](https://user-images.githubusercontent.com/111653544/220863924-7ab5d079-64c0-4296-b1b0-14ab6ff2f186.PNG)
 ![comment](https://user-images.githubusercontent.com/111653544/219675470-0a34d354-57e0-467f-aa48-49e00b681c2e.PNG)
 ![courses](https://user-images.githubusercontent.com/111653544/219671729-3487f352-e0f1-489f-bb09-b7f95060816b.PNG)
+![course details](https://user-images.githubusercontent.com/111653544/220863974-b753d9de-4190-44a3-84c6-f0d0c2679ad4.PNG)
+![course details2](https://user-images.githubusercontent.com/111653544/220863978-228d985b-c2b2-419a-b934-6af36f88f329.PNG)
 ![login](https://user-images.githubusercontent.com/111653544/219673979-3a09c620-b7f2-4dfc-9e69-7001a420f548.PNG)
+
 
 
 
