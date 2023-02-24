@@ -160,7 +160,7 @@
                                                             <label for="photos" class="block text-sm font-medium text-gray-700">Second Level</label>
                                                             <div class="mt-1">
                                                                 <label class="col-form-label" >Title</label>
-                                                                <input class="form-control" type="text" name="title2" placeholder="Enter Title">
+                                                                <input class="form-control" type="text" name="course_title2[]" placeholder="Enter Title">
                                                             </div>
                                                             <div class="mt-1">
                                                                 <label class="col-form-label">Choose Video</label>
@@ -197,7 +197,15 @@
 </div>
 </head>
   </body>
-        <script src="/js/uploadimage.js"></script>
+    <script>
+    function loadFile(event){
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    }
+</script>
 
  <script>
         const title = document.getElementById("title");
@@ -232,7 +240,7 @@ CKEDITOR.replace( 'summary-ckeditor', {
             var i = 0;
             $("#add2").click(function(){
                 ++i;
-                $("#dynamicTable2").append('<tr><td><div class="mt-1"><label class="col-form-label">Title</label><input class="form-control" type="text" name="title2" placeholder="Enter Title"></div><div class="mt-1"><label class="col-form-label">Choose Video</label><input type="file"  name="videos2[]" multiple></div><button type="button" class="button button--lg w-full xl:w-25 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 xl:mt-0  remove-tr2">Remove</button></td></tr>');
+                $("#dynamicTable2").append('<tr><td><div class="mt-1"><label class="col-form-label">Title</label><input class="form-control" type="text" name="course_title2[]" placeholder="Enter Title"></div><div class="mt-1"><label class="col-form-label">Choose Video</label><input type="file"  name="videos2[]" multiple></div><button type="button" class="button button--lg w-full xl:w-25 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 xl:mt-0  remove-tr2">Remove</button></td></tr>');
             });
             $(document).on('click', '.remove-tr2', function(){
                  $(this).parents('tr').remove();

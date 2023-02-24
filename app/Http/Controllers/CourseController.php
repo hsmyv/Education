@@ -45,6 +45,7 @@ class CourseController extends Controller
 
 
         $title = $request->course_title;
+        $title2 = $request->course_title2;
         $countvideos1 = $request->videos;
         $countvideos2 = $request->videos2;
 
@@ -79,7 +80,7 @@ class CourseController extends Controller
             $path = $videos2[$i]->store('videos/secondlevel', ['disk' =>      'my_files']);
             $datasave = [
                 'course_id' => $course->id,
-                'title'    => $title[$i],
+                'title'    => $title2[$i],
                 'video'      => $path
             ];
             $getID3 = new \getID3;
@@ -132,46 +133,38 @@ class CourseController extends Controller
 
         $course->update($attributes);
 
-        $title = $request->course_title;
-        $countvideos1 = $request->videos;
-        $countvideos2 = $request->videos2;
+    // Get the course object
+    $course = Course::findOrFail($course->id);
 
-        if ($request->hasFile('videos')) {
-            $videos = $request->file('videos');
-            for ($i = 0; $i < count($countvideos1); $i++) {
+    // Loop through the input arrays
+    foreach ($request->input('video_id') as $key => $value) {
 
-                $path = $videos[$i]->store('videos/firstlevel', ['disk' => 'my_files']);
-                $datasave = [
-                    'course_id' => $course->id,
-                    'title'    => $title[$i],
-                    'video'      => $path
-                ];
-                $getID3 = new \getID3;
-                $file = $getID3->analyze($path);
-                $duration = date('H:i:s', $file['playtime_seconds']);
-                $datasave['duration'] = $duration;
-                Video::create($datasave);
-            }
+        $video_id = $request->input('video_id')[$key];
+        $title = $request->input('course_title')[$key];
+        // Get the existing video object
+        $video = $course->videos()->findOrFail($video_id);
+
+        // Update the video object
+        $video->title = $title;
+            // Check if a new video file was uploaded
+            if ($request->hasFile('videos') && isset($request->file('videos')[$key]) && $request->file('videos')[$key]->isValid()) {
+
+            Storage::disk('my_files')->delete($video->video);
+
+            // Storage::delete($video->video_path);
+
+            // Store the new video file
+            $path = $request->file('videos')[$key]->store('videos/firstlevel', ['disk' =>      'my_files']);
+
+            // Update the video object with the new video path
+            $video->video = $path;
         }
 
-        if ($request->hasFile('videos2')) {
-            $videos2 = $request->file('videos2');
+        // Save the updated video object
+        $video->save();
+    }
 
-            for ($i = 0; $i < count($countvideos2); $i++) {
 
-                $path = $videos2[$i]->store('videos/secondlevel', ['disk' => 'my_files']);
-                $datasave = [
-                    'course_id' => $course->id,
-                    'title'    => $title[$i],
-                    'video'      => $path
-                ];
-                $getID3 = new \getID3;
-                $file = $getID3->analyze($path);
-                $duration = date('H:i:s', $file['playtime_seconds']);
-                $datasave['duration'] = $duration;
-                Video::create($datasave);
-            }
-        }
 
         return redirect()->route('admin-courses')->with('success', "The course updated successfully");
     }
