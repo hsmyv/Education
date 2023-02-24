@@ -1,64 +1,31 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+EDUCATION
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![index](https://user-images.githubusercontent.com/111653544/219664603-fb462c04-ecce-4174-9e3a-511fe5032d03.PNG)
+![aboutus](https://user-images.githubusercontent.com/111653544/219671654-332c46b7-5163-4bd2-a4be-3de51c101514.PNG)
+![blogs](https://user-images.githubusercontent.com/111653544/219671705-6d5906f3-4246-476c-8bff-9f62ee610665.PNG)
+![blogs2](https://user-images.githubusercontent.com/111653544/219671716-83824186-7371-4583-8945-761e24372fa1.PNG)
+![blog comment](https://user-images.githubusercontent.com/111653544/220863924-7ab5d079-64c0-4296-b1b0-14ab6ff2f186.PNG)
+![comment](https://user-images.githubusercontent.com/111653544/219675470-0a34d354-57e0-467f-aa48-49e00b681c2e.PNG)
+![courses](https://user-images.githubusercontent.com/111653544/219671729-3487f352-e0f1-489f-bb09-b7f95060816b.PNG)
+![course details](https://user-images.githubusercontent.com/111653544/220863974-b753d9de-4190-44a3-84c6-f0d0c2679ad4.PNG)
+![course details2](https://user-images.githubusercontent.com/111653544/220863978-228d985b-c2b2-419a-b934-6af36f88f329.PNG)
+![login](https://user-images.githubusercontent.com/111653544/219673979-3a09c620-b7f2-4dfc-9e69-7001a420f548.PNG)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ADMIN DASHBOARD
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+![admin create course 1](https://user-images.githubusercontent.com/111653544/219674087-ebd6660e-0603-4929-9a34-347a0dbf84d6.PNG)
+![admin create course 2](https://user-images.githubusercontent.com/111653544/219674116-4cbb152b-edf7-47dd-9baa-bdceaad22f1e.PNG)
+![admin update course](https://user-images.githubusercontent.com/111653544/219674282-cf512e84-d1d7-4991-b093-d9cb43d0491a.PNG)
+![admin posts](https://user-images.githubusercontent.com/111653544/219674166-447b8fbf-91b5-4677-ba1c-8bef8ed15e7f.PNG)
+![admin events](https://user-images.githubusercontent.com/111653544/219674185-342ce2e9-7ce1-4b66-8625-b4cb02b18e0e.PNG)
+![admin1](https://user-images.githubusercontent.com/111653544/219674340-d9a0faf4-11dd-468d-b61f-33f17826b3cf.PNG)
+![admin contacts](https://user-images.githubusercontent.com/111653544/219674613-5c59930b-b941-44fb-927c-2f0225b5f0b1.PNG)
+![admin contacts 2](https://user-images.githubusercontent.com/111653544/219674624-f44c050d-c312-4c32-9633-4ed1ea7ffed1.PNG)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
