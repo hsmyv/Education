@@ -175,19 +175,31 @@
                                                                     Level</label>
                                                                 <button type="button" name="add" id="add"
                                                                     class="button xl:w-32 text-white bg-theme-1 xl:mr-3 align-top mt-2 btn btn-success">Add</button>
-
+                                                                    @php $i=1 @endphp
                                                                 @foreach ($course->videos()->containingVideoPath()->get() as $video)
                                                                     <div class="mt-1">
-                                                                        <label class="col-form-label">Title</label>
+                                                                        <label class="col-form-label">Title  {{ $i++ }}</label>
                                                                         <input value="{{ $video->title }}"
                                                                             class="form-control" type="text"
                                                                             name="course_title[]"
                                                                             placeholder="Enter Title">
                                                                     </div>
                                                                     <div class="mt-1">
+
+                                                                        <input type="hidden" name="video_id[]"
+                                                                            value="{{ $video->id }}">
+                                                                        <div>
+                                                                            <video width="320" height="240"
+                                                                                controls>
+                                                                                <source
+                                                                                    src="{{ URL::asset($video->video) }}"
+                                                                                    type="video/mp4">
+                                                                                Your browser does not support the video
+                                                                                tag.
+                                                                            </video>
+                                                                        </div>
                                                                         <label class="col-form-label">Choose
                                                                             Video</label>
-                                                                            <input type="hidden" name="video_id[]" value="{{$video->id}}">
                                                                         <input accept="video/mp4" type="file"
                                                                             name="videos[]"
                                                                             value="{{ old('videos[]') }}" multiple>
@@ -218,6 +230,9 @@
                                                                     <div class="mt-1">
                                                                         <label class="col-form-label">Choose
                                                                             Video</label>
+                                                                        <input type="hidden" name="video_id2[]"
+                                                                            value="{{ $video->id }}">
+
                                                                         <input type="file" name="videos2[]"
                                                                             multiple>
 
@@ -285,8 +300,8 @@
     $("#add").click(function() {
         ++i;
         $("#dynamicTable").append(
-            '<tr><td><div class="mt-1"><label class="col-form-label">Title</label><input class="form-control" type="text" name="course_title[]" placeholder="Enter Title"></div><div class="mt-1"><label class="col-form-label">Choose Video</label><input type="file"  name="videos[]" value="{{ old('videos') }}" multiple></div><button type="button" class="button button--lg w-full xl:w-25 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 xl:mt-0  remove-tr">Remove</button></td></tr>'
-            );
+            '<tr><td><div class="mt-1"><label class="col-form-label">New Title</label><input class="form-control" type="text" name="added_course_title[]" placeholder="Enter Title"></div><div class="mt-1"><label class="col-form-label">Choose Video</label><input type="file"  name="added_videos[]" value="{{ old('videos') }}" multiple></div><button type="button" class="button button--lg w-full xl:w-25 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 xl:mt-0  remove-tr">Remove</button></td></tr>'
+        );
     });
     $(document).on('click', '.remove-tr', function() {
         $(this).parents('tr').remove();
@@ -299,7 +314,7 @@
         ++i;
         $("#dynamicTable2").append(
             '<tr><td><div class="mt-1"><label class="col-form-label">Title</label><input class="form-control" type="text" name="course_title2[]" placeholder="Enter Title"></div><div class="mt-1"><label class="col-form-label">Choose Video</label><input type="file"  name="videos2[]" multiple></div><button type="button" class="button button--lg w-full xl:w-25 text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300 xl:mt-0  remove-tr2">Remove</button></td></tr>'
-            );
+        );
     });
     $(document).on('click', '.remove-tr2', function() {
         $(this).parents('tr').remove();

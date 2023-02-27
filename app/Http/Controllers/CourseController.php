@@ -133,6 +133,31 @@ class CourseController extends Controller
 
         $course->update($attributes);
 
+        $added_title = $request->added_course_title;
+        // $title2 = $request->course_title2;
+        $added_countvideos1 = $request->added_videos;
+        // $countvideos2 = $request->videos2;
+
+
+        if($request->hasFile('added_videos'))
+        {
+            $videos = $request->file('added_videos');
+             for ($i = 0; $i < count($added_countvideos1); $i++) {
+
+            $path = $videos[$i]->store('videos/firstlevel', ['disk' =>      'my_files']);
+            $datasave = [
+                'course_id' => $course->id,
+                'title'    => $added_title[$i],
+                'video'      => $path
+            ];
+            $getID3 = new \getID3;
+            $file = $getID3->analyze($path);
+            $duration = date('H:i:s', $file['playtime_seconds']);
+            $datasave['duration'] = $duration;
+            Video::create($datasave);
+        }
+        }
+
     // Get the course object
     $course = Course::findOrFail($course->id);
 
