@@ -67,7 +67,7 @@ Route::get('courses/{course:slug}', [CourseController::class,  'show'])->name('s
 Route::get('courses/{course}/edit',  [CourseController::class,   'edit'])->name('course.edit');
 Route::put('courses/{course}/update',  [CourseController::class, 'update'])->name('course.update');
 Route::post('courses/create',  [CourseController::class, 'create'])->name('create');
-
+Route::patch('courses/change/{course}/status', [CourseController::class, 'change_status'])->name('update_status_course');
 Route::delete('courses/{course}/delete',   [CourseController::class, 'destroy'])->name('delete-course')->middleware('auth');
 
 Route::get('/',               [WebController::class,  'index'])->name('home');

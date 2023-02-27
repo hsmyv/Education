@@ -5,12 +5,7 @@
 	<!--Main container start -->
 	<main class="ttr-wrapper">
 		<div class="container-fluid">
-			<div class="db-breadcrumb">
-				<h4 class="breadcrumb-title">Courses</h4>
-				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-					<li>Courses</li>
-				</ul>
+			<x-admin.start-banner :post="$header"/>
 			</div>
 			<div class="row">
 				<!-- Your Profile Views Chart -->
@@ -57,9 +52,11 @@
 													<li><i class="fa fa-star"></i></li>
 												</ul>
 											</li>
+                                            @if($course->status == 0)
 											<li class="card-courses-stats">
 												<a href="#" class="btn button-sm green radius-xl">Pending</a>
 											</li>
+                                            @endif
 											<li class="card-courses-price">
 												<del>$190</del>
 												<h5 class="text-primary">${{$course->fee}}</h5>
@@ -72,13 +69,19 @@
 											<p> {{$course->description}} </p>
 										</div>
 										<div class="col-md-12">
-											<a href="#" class="btn blue radius-xl outline">Approve</a>
+                                            @if($course->status == 0)
+                                            <form method="POST" action="{{route('update_status_course', $course->id)}}" style="display: inline">
+                                                @csrf
+                                                @method('PATCH')
+											<button class="btn blue radius-xl outline">Approve</button>
+                                            </form>
+                                            @endif
                                             <a href="{{route('course.edit', $course->id)}}" class="btn green radius-xl outline">Edit</a>
 
                                              <form method="POST" action="{{route('delete-course', $course->id)}}" style="display: inline">
                                                 @csrf
                                                 @method('DELETE')
-                                            <button class="btn red outline radius-xl">Cancel</button>
+                                            <button class="btn red outline radius-xl">Delete</button>
                                     </form>
 										</div>
 									</div>

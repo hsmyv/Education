@@ -5,7 +5,7 @@
 
         <main class="ttr-wrapper">
 		<div class="container-fluid">
-			<x-admin.start-banner/>
+			<x-admin.start-banner :post="$header"/>
 
             	<div class="row">
 				<!-- Your Profile Views Chart -->

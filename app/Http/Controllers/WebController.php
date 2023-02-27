@@ -30,7 +30,7 @@ class WebController extends Controller
     public function courses()
     {
         return view('pages.courses', [
-            'courses' => Course::inRandomOrder()->limit(8)->get(),
+            'courses' => Course::where('status',1)->inRandomOrder()->limit(8)->get(),
             'coursesname' => 'Courses']);
 
 

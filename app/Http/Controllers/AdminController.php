@@ -20,7 +20,7 @@ class AdminController extends Controller
     {
         return view('admin.index', [
             'users' => User::all(),
-            'courses' => Course::latest()->take(5)->get()
+            'courses' => Course::where('status',1)->latest()->take(5)->get()
         ]);
     }
     public function post_comments()
@@ -29,7 +29,7 @@ class AdminController extends Controller
     }
     public function courses()
     {
-        return view('admin.courses.courses', ['courses' => Course::all()]);
+        return view('admin.courses.courses', ['courses' => Course::all(), 'header' => 'Courses']);
     }
     public function messages()
     {
@@ -80,21 +80,21 @@ class AdminController extends Controller
     }
     public function create_course()
     {
-        return view('admin.courses.create-course');
+        return view('admin.courses.create-course', ['header' => 'Courses']);
     }
 
     public function create_post()
     {
-        return view('admin.blog.create-post');
+        return view('admin.blog.create-post', ['header' => 'Posts']);
     }
     public function edit_post(Post $post)
     {
-        return view('admin.blog.edit-post', ['post' => $post]);
+        return view('admin.blog.edit-post', ['post' => $post, 'header' => 'Posts']);
     }
 
     public function posts(Post $post)
     {
-        return view('admin.blog.posts', ['post' => $post, 'posts' => Post::all()]);
+        return view('admin.blog.posts', ['post' => $post, 'posts' => Post::all(), 'header' => 'Posts']);
     }
     public function edit_about()
     {

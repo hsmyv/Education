@@ -96,18 +96,18 @@ class CourseController extends Controller
 
     public function destroy(Course $course)
     {
-        $videos = $course->videos;
+        /*$videos = $course->videos;
         foreach ($videos as $video) {
             Storage::disk('my_files')->delete($video->video);
             $video->delete();
         }
-         $course->delete();
+         $course->delete();*/
         return back()->with('success', 'Course Canceled!');
     }
 
     public function edit(Course $course)
     {
-        return view('admin.courses.edit', compact('course'));
+        return view('admin.courses.edit', ['course' => $course, 'header' => 'Courses']);
     }
 
     public function update(Request $request, Course $course)
@@ -192,6 +192,12 @@ class CourseController extends Controller
 
 
         return redirect()->route('admin-courses')->with('success', "The course updated successfully");
+    }
+
+    public function change_status(Course $course)
+    {
+        $course->update(['status' => 1]);
+        return back()->with('success', "The status of course has been changed!");
     }
 
 
