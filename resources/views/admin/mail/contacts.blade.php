@@ -3,7 +3,7 @@
     <x-admin.leftsidebar/>
         <main class="ttr-wrapper">
 		<div class="container-fluid">
-			<x-admin.start-banner/>
+			{{-- <x-admin.start-banner/> --}}
         	<div class="row">
 				<!-- Your Profile Views Chart -->
 				<div class="col-lg-12 m-b30">
