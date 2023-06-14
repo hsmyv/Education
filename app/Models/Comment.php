@@ -11,6 +11,7 @@ class Comment extends Model
 {
     use HasFactory, Notifiable;
 
+
     public function post()
     {
         return $this->belongsTo(Post::class, 'commentable_id');

@@ -4,7 +4,7 @@
                                                <form method="post" action="{{route('reply-post')}}">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <input id="hiddentext" type="text" name="comment_body" class="form-control" />
+                                                    <input type="text" name="comment_body" class="form-control" />
                                                     <input type="hidden" name="post_id" value="{{ $comment->post->id }}" />
                                                     <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
                                                     <input type="hidden" name="commentable_user" value="{{ $comment->user->name }}" />
