@@ -3,7 +3,7 @@
     <x-admin.leftsidebar />
     <main class="ttr-wrapper">
         <div class="container-fluid">
-            <x-admin.start-banner />
+			<x-admin.start-banner :post="'Events'"/>
 
             <div class="row">
                 <!-- Your Profile Views Chart -->

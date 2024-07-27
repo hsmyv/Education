@@ -3,7 +3,7 @@
     <x-admin.leftsidebar/>
     <main class="ttr-wrapper">
 		<div class="container-fluid">
-			<x-admin.start-banner :event="$events"/>
+			<x-admin.start-banner :post="'Events'"/>
 
                 @if($events->count())
 

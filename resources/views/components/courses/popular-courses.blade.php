@@ -21,7 +21,7 @@
                             <div class="thumb">
                                 <div class="overlay overlay-bg"></div>
                                 <a href="{{ route('show', $course->slug) }}"><img style="height:150px; width:300px;"
-                                        src="@if (empty($course->getFirstMediaUrl('images'))) assets\images\no-photo.jpg @else {{ $course->getFirstMediaUrl('images') }}@endif"
+                                        src="@if (empty($course->getFirstMediaUrl('images'))) assets\images\no-photo.jpg @else{{$course->getFirstMediaUrl('images') }}@endif"
                                         alt=""></a>
                             </div>
                             <div class="meta d-flex justify-content-between">

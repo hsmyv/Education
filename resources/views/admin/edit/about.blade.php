@@ -85,7 +85,7 @@
   <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-6 no-padding info-area-left">
-                    <img src="/assets/images/banner/nobannerimage.png" id="output" width="150" height="150"/>
+                    <img src="{{asset("assets/assets/images/banner/banner1.jpg")}}" id="output" width="150" height="150"/>
                     {{--picture--}}
                     <div class="form-group">
                     <div class="sm:col-span-6">
